@@ -1,0 +1,25 @@
+#logo {
+  font-size: x-large;
+}
+
+body > header {
+  border-bottom: 1px solid darkgray;
+}
+
+div#area_logada{
+  display: flex;
+}
+  #area_logada > ul {
+    width: 20%;
+    padding: 1em;
+  }
+  
+  #area_logada > section {
+    width: 80%;
+    padding: 1em;
+  }
+
+main {
+  min-height: 75vh;
+}
+

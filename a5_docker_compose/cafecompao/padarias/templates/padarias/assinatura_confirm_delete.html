@@ -1,0 +1,23 @@
+{% extends 'minha_conta.html' %}
+
+# Confirmar cancelamento da assinatura
+{% block conteudo_logado %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Cancelar assinatura</h1>
+                <p>Assinatura atual:</p>
+                <ul>
+                    <li>Cesta: {{ assinatura.cesta.nome }}</li>
+                    <li>Valor: R${{ assinatura.cesta.preco }}</li>
+                    <li>Data de inicio: {{ assinatura.data_inicio }}</li>
+                </ul>
+                <p>Tem certeza que deseja cancelar sua assinatura?</p>
+                <form action="{% url 'assinaturas_delete' assinatura.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Cancelar assinatura</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
