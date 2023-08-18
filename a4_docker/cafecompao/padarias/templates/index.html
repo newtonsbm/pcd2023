@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Café com Pão - Home{% endblock %}
+
+{% block conteudo %}
+  <h1>Principal</h1>
+  <p>Seja bem-vindo ao Café com Pão!</p>
+  <p>Atualmente contatmos com <strong>{{ count_padarias }} unidades</strong> em toda nossa rede</p>
+  <p>Temos também <strong>{{ count_cestas }} opções de cestas de café da manhã</strong> à sua escolha</p>
+  <p>No total temos <strong>{{ count_produtos }} tipos de produtos </strong> no nosso estoque.</p>
+{% endblock %}

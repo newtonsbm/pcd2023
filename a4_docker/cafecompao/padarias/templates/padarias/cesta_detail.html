@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+  <h1>Detalhes da Cesta</h1>
+  <p>A seguir os detalhes da cesta</p>
+  <ul>
+    <li>Nome: {{ cesta.nome }}</li>
+    <li>Preço: {{ cesta.preco }}</li>
+    <li>Descrição: {{ cesta.descricao }}</li>
+  </ul>
+  <h2>Produtos da Cesta</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for produto in cesta.produtos.all %}
+        <tr>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.preco }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <a href="{% url 'cestas_list' %}" class="btn btn-secondary">Voltar</a>
+{% endblock %}

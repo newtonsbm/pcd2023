@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block conteudo %}
+<div id="area_logada">
+  {% include 'components/menu_logado.html' %}
+  <section>
+    {% include 'components/mensagens.html' %}
+    {% block conteudo_logado %}
+    <h1>Área Logada - Minha Conta</h1>
+    <h2>{{ user.first_name }}</h2>
+    <p>
+      Bem-vindo ao seu painel de controle. Aqui você pode gerenciar suas informações pessoais e seus pedidos.
+    </p>
+    {% endblock %}
+  </section>
+</div>
+{% endblock %}
