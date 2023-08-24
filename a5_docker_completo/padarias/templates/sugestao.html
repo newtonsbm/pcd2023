@@ -1,0 +1,47 @@
+{% extends 'minha_conta.html'%}
+
+{% block conteudo_logado %}
+<h1>Área Logada - Minha Conta</h1>
+<h2>Formulário de Sugestão</h2>
+<form action="/sugestao" method="post">
+  {% csrf_token %} 
+  <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" value="{{user.first_name}} {{user.last_name}}" readonly>
+  </div>
+  <div class="form-group">
+      <label for="titulo">Titulo</label>
+      <input type="titulo" class="form-control" id="titulo" name="titulo" value="" required>
+  </div>
+  <!-- Create radio group to get a grade from 1 to 5-->
+  <div class="form-group">
+      <label for="nps">Qual nota você da para nosso serviço?</label>
+      <br>
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn">
+              <input type="radio" name="nps" id="option1" value="1" autocomplete="off" checked> 1
+          </label>
+          <label class="btn">
+              <input type="radio" name="nps" id="option2" value="2" autocomplete="off"> 2
+          </label>
+          <label class="btn">
+              <input type="radio" name="nps" id="option3" value="3" autocomplete="off"> 3
+          </label>
+          <label class="btn">
+              <input type="radio" name="nps" id="option4" value="4" autocomplete="off"> 4
+          </label>
+          <label class="btn">
+              <input type="radio" name="nps" id="option5" value="5" autocomplete="off"> 5
+          </label>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="sugestao">Mensagem</label>
+      <textarea class="form-control" id="mensagem" name="mensagem" rows="3" required></textarea>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h1>Lista de Padarias</h1>
+<p>A seguir a lista de padarias</p>
+<ul>
+  {% for padaria in padaria_list %}
+    <li>
+      <a href="{% url 'padarias_detail' padaria.id %}">
+      {{ padaria.nome }} - {{ padaria.endereco.cidade }} - {{ padaria.endereco.estado }}
+      </a>
+    </li>
+  {% endfor %}
+  <br>
+  {% include "components/paginator.html" %}
+{% endblock %}

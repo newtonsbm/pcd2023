@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+  <h1>{{ padaria.nome }}</h1>
+  <p>{{ padaria.endereco.cidade }} - {{ padaria.endereco.estado }}</p>
+  <p>{{ padaria.descricao }}</p>
+  <p>Cestas Disponíveis:</p>
+  <ul>
+    {% for cesta in padaria.cestas.all %}
+      <li>{{ cesta.nome }} - {{ cesta.preco }}</li>
+    {% endfor %}
+  </ul>
+  <br>
+  <a href="{% url 'padarias_list' %}" class="btn btn-secondary">Voltar</a>
+{% endblock %}

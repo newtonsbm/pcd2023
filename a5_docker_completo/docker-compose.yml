@@ -1,0 +1,29 @@
+version: "3.8"
+
+volumes:
+  dados_banco: {}
+
+services:
+  bancao:
+    container_name: container_postgres
+    image: postgres:latest
+    volumes:
+      - dados_banco:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=aluno
+      - POSTGRES_PASSWORD=aluno123
+      - POSTGRES_DB=meubanco
+      - POSTGRES_PORT=5432
+  djangao:
+    container_name: container_django 
+    depends_on:
+      - bancao
+    build: .
+    ports:
+      - "5000:8000"
+    volumes:
+      - .:/code
+    command: python manage.py runserver 0.0.0.0:8000
+
+
+

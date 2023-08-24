@@ -1,0 +1,13 @@
+<ul class="list-group">
+  <li class="list-group-item"><a href="{% url 'minha_conta' %}">Minha Conta</a></li>
+  <li class="list-group-item"><a href="{% url 'sugestao' %}">Enviar Sugestão</a></li>
+  {% if user.assinatura %}
+    <li class="list-group-item"><a href="{% url 'assinaturas_update' user.assinatura.id %}">Alterar Assinatura</a></li>
+    <li class="list-group-item"><a href="{% url 'assinaturas_delete' user.assinatura.id %}">Deletar Assinatura</a></li>
+  {% else %}
+    <li class="list-group-item"><a href="{% url 'assinaturas_create' %}">Nova Assinatura</a></li>
+  {% endif %}
+  <li class="list-group-item"><a href="#">Meus Dados</a></li>
+  <li class="list-group-item"><a href="#">Alterar Senha</a></li>
+  <li class="list-group-item"><a href="{% url 'logout' %}">Sair</a></li>
+</ul>
