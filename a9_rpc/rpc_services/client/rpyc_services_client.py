@@ -1,6 +1,6 @@
 import rpyc
 
-conn = rpyc.connect("rpyc_services_server", 18811)
+conn = rpyc.connect("rpyc_server", 18811)
 print("Somando 4 + 7:")
 x = conn.root.soma(4,7)
 print(x)
