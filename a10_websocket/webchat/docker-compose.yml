@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  default:
+
+services:
+  server:
+    networks:
+      - default
+    build: "./server"
+    tty: true
+    ports:
+      - "8765:8765"
+    command: ["python", "./server.py"]
+  client:
+    build: "./client"
+    tty: true
+    stdin_open: true
+    networks:
+      - default
+    command: ["python", "./client.py"]
