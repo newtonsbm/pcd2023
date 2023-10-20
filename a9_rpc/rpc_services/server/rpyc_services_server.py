@@ -2,10 +2,12 @@ import rpyc
 
 class CalculadoraService(rpyc.Service):
     def exposed_soma(self, a, b):
+        print("Somando %d + %d" % (a, b))
         return a + b
     def exposed_subtracao(self, a, b):
         return a - b
     def exposed_multiplicacao(self, a, b):
+        print("Multiplicando %d * %d" % (a, b))
         return a * b
     def exposed_divisao(self, a, b):
         return a / b
