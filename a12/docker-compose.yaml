@@ -1,0 +1,64 @@
+version: "3.8"
+services:
+    rabbit:
+        image: rabbitmq:3-management-alpine
+        logging:
+            driver: none 
+        ports: 
+            - 5672:5672
+            - 8080:15672
+    cafepao:
+        build: ./cafepao
+        volumes:
+            - "./cafepao/:/code"
+        restart: on-failure
+        depends_on:
+            - "rabbit"
+        command: sh -c '/bin/wait-for-it.sh rabbit:5672 --timeout=30 -- python -u main.py'
+        environment:
+            AMQP_URL: amqp://guest:guest@rabbit:5672
+    notas:
+        build: ./notas
+        volumes:
+            - "./notas/:/code"
+        restart: on-failure
+        depends_on:
+            - "rabbit"
+        command: sh -c '/bin/wait-for-it.sh rabbit:5672 --timeout=30 -- python -u main.py'
+        environment:
+            AMQP_URL: amqp://guest:guest@rabbit:5672
+    whatsapp:
+        build: ./whatsapp
+        volumes:
+            - "./whatsapp/:/code"
+        restart: on-failure
+        depends_on:
+            - "rabbit"
+        command: sh -c '/bin/wait-for-it.sh rabbit:5672 --timeout=30 -- python -u main.py'
+        environment:
+            AMQP_URL: amqp://guest:guest@rabbit:5672
+    mailing:
+        build: ./mailing
+        volumes:
+            - "./mailing/:/code"
+        restart: on-failure
+        depends_on:
+            - "rabbit"
+        command: sh -c '/bin/wait-for-it.sh rabbit:5672 --timeout=30 -- python -u main.py'
+        environment:
+            AMQP_URL: amqp://guest:guest@rabbit:5672
+    entregas:
+        build: ./entregas
+        volumes:
+            - "./entregas/:/code"
+        restart: on-failure
+        depends_on:
+            - "rabbit"
+        command: sh -c '/bin/wait-for-it.sh rabbit:5672 --timeout=30 -- python -u main.py'
+        deploy:
+            mode: replicated
+            replicas: 3
+        environment:
+            AMQP_URL: amqp://guest:guest@rabbit:5672
+    
+   
